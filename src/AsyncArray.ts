@@ -4,6 +4,12 @@ import { IElementCallback } from './interfaces/IElementCallback';
 export class AsyncArray<TElement> implements IAsyncArray<TElement> {
   constructor(private readonly _array: Array<TElement>) {}
 
+  *[Symbol.iterator](): Iterator<TElement> {
+    for (const element of this._array) {
+      yield element;
+    }
+  }
+
   public map<TResult>(callback: IElementCallback<TElement, TResult>): Promise<TResult[]> {
     return Promise.all(
       this._array.map((element: TElement, index: number): Promise<TResult> => callback(element, index)),
@@ -26,7 +32,7 @@ export class AsyncArray<TElement> implements IAsyncArray<TElement> {
     let isSwapNeeded: boolean;
     for (let i: number = arrayLength; i > 0; i--) {
       isSwapNeeded = true;
-      for (let j: number = 0; j < i - 1; j++) {
+      for (let j = 0; j < i - 1; j++) {
         if ((await callback(this._array[j + 1], this._array[j])) <= 0) {
           [this._array[j + 1], this._array[j]] = [this._array[j], this._array[j + 1]];
           isSwapNeeded = false;

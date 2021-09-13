@@ -15,4 +15,15 @@ describe('AsyncArray', () => {
       expect(nativeArray).toEqual(expected);
     });
   });
+
+  describe('iterator', () => {
+    it('should cast AsyncArray to array properly', async () => {
+      const nativeArray: number[] = [1, 3, 2];
+
+      const asyncArray: AsyncArray<number> = new AsyncArray(nativeArray);
+      const castedArray: number[] = Array.from(asyncArray);
+
+      expect(castedArray).toEqual(nativeArray);
+    });
+  });
 });
