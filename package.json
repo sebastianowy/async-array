@@ -1,6 +1,6 @@
 {
   "name": "@sebowy/async-array",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "description": "\"AsyncArray\" - Run array higher order functions asynchronously",
   "main": "./dist/umd/index.js",
   "module": "./dist/esm/index.js",
