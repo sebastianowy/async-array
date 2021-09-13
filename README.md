@@ -18,14 +18,20 @@ yarn add @sebowy/async-array
 
 ### Examples
 
-```js
-import { AsyncArray } from '@sebowy/async-array';
+- async sorting
 
-const array = [1, 2, 3];
+```js
+import { AsyncArray } from "@sebowy/async-array";
+
+const array = [3, 5, 1, 2, 4];
 const asyncArray = new AsyncArray(array);
+asyncArray
+  .sort((left, right) => Promise.resolve(left - right))
+  .then(console.log);
 ```
 
 will produce:
 
 ```bash
+[1, 2, 3, 4, 5]
 ```
