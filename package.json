@@ -1,5 +1,5 @@
 {
-  "name": "@sebowy/async-array",
+  "name": "@sebastianowy/async-array",
   "version": "1.1.0",
   "description": "\"AsyncArray\" - Run array higher order functions asynchronously",
   "main": "./dist/umd/index.js",
